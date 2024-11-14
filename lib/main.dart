@@ -49,13 +49,13 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  List<Point> items = [];
+  Set<Point> items = {};
 
   void updateStarPositions() {
     setState(() {
       items = items.map((offset) {
         return offset;
-      }).toList();
+      }).toSet();
     });
   }
 
@@ -89,7 +89,7 @@ class _MyAppState extends State<MyApp> {
 }
 
 class DynamicStarCustomPainter extends CustomPainter {
-  final List<Point> items;
+  final Set<Point> items;
 
   DynamicStarCustomPainter({required this.items});
 
