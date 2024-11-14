@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
 
   Set<Point> items = {};
 
-  void updateStarPositions() {
+  void updateItems() {
     setState(() {
       items = items.map((offset) {
         return offset;
@@ -71,14 +71,14 @@ class _MyAppState extends State<MyApp> {
             children: [
               CustomPaint(
                 size: canvasSize,
-                painter: DynamicStarCustomPainter(
+                painter: ItemPainter(
                   items: items,
                 ),
               ),
               SizedBox(height: 70),
               ElevatedButton(
-                onPressed: updateStarPositions,
-                child: Text('Update Star Positions'),
+                onPressed: updateItems,
+                child: Text('Update Items'),
               ),
             ],
           ),
@@ -88,10 +88,10 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class DynamicStarCustomPainter extends CustomPainter {
+class ItemPainter extends CustomPainter {
   final Set<Point> items;
 
-  DynamicStarCustomPainter({required this.items});
+  ItemPainter({required this.items});
 
   @override
   void paint(Canvas canvas, Size size) {
